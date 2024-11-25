@@ -29,6 +29,16 @@ int main()
     }
     */
 
+
+    MyList<int> b; // head = tail = nullptr
+    b.show(); // empty
+
+    b.push_back(4); // head = tail = 4
+    b.push_back(8); // head=4, tail=8
+    b.push_back(2); // head=4, tail=2
+    b.push_back(5); // head=4, tail=5
+    b.show();
+    cout << "---------------------\n\n";
 }
 
 

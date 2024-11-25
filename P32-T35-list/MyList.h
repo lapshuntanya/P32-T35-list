@@ -30,17 +30,25 @@ namespace mylist {
 			head = tail = nullptr;
 		}
 		~MyList() {
-
+			Node<ListType>* p = head;
+			Node<ListType>* pDel = head;
+			while (p != nullptr) {
+				pDel = p;
+				cout << "Del: " << pDel->info << endl;	 
+				p = p->next;
+				delete pDel;
+			}
 		}
 
+
 		void push_back(ListType value) {
-			//1 Створюєсо новий вузол
+			//1 Створюємо новий вузол
 			Node<ListType>* el = new Node<ListType>(value);
-			//Якщо перший вузол в списку
+			//2.1 Якщо перший вузол в списку
 			if (head == nullptr) {
 				head = tail = el;
 			}
-			else {//Якщо НЕ перший вузол в списку
+			else {//2.2 Якщо НЕ перший вузол в списку
 				//В хвіст зберігаємо адресу нового вузла (привязка вузлів)
 				tail->next = el;
 				//Оновлюємо значення хвоста - зсовуємо хвіст
