@@ -14,7 +14,7 @@ namespace mylist {
 
 		DNode(Type value) {
 			info = value;
-			next = = prev = nullptr;
+			next = prev = nullptr;
 		}
 		void show() {
 			cout << "Info: " << info << endl;
@@ -26,7 +26,7 @@ namespace mylist {
 	template <typename ListType>
 	class DList {
 		DNode<ListType>* head; //голова - адреса першого вузла
-		DNode<ListType>* tail; //хвіст - фдркса останнього вузла
+		DNode<ListType>* tail; //хвіст - aдрeса останнього вузла
 	public:
 		DList() {
 			head = tail = nullptr;
@@ -42,7 +42,6 @@ namespace mylist {
 			}
 		}
 
-
 		void push_back(ListType value) {
 			//1 Створюємо новий вузол
 			DNode<ListType>* el = new DNode<ListType>(value);
@@ -53,7 +52,7 @@ namespace mylist {
 			else {//2.2 Якщо НЕ перший вузол в списку
 				//В хвіст зберігаємо адресу нового вузла (привязка вузлів)
 				tail->next = el;
-				el->prev = tail;
+				el->prev = tail; //Новий вузол вказуємо на хвіст
 
 				//Оновлюємо значення хвоста - зсовуємо хвіст
 				tail = el;
@@ -63,11 +62,36 @@ namespace mylist {
 		void show() {
 			if (head == nullptr) cout << "List is empty!\n";
 
-			Node<ListType>* p = head;
+			DNode<ListType>* p = head;
 			while (p != nullptr) {
 				p->show();
 				p = p->next;
 			}
+		}
+
+		void showReverse() {
+			//Вивести список в зворотньому порядку
+			if (head == nullptr) cout << "List is empty!\n";
+
+			DNode<ListType>* p = tail;
+			while (p != nullptr) {
+				cout << p->info << " ";
+				p = p->prev;
+			}
+			cout << endl;
+		}
+
+		DNode<ListType>* seach(ListType value) {
+			//Знайти вузол з зазначеним value
+			//Якщо такого вузла немає, то повернути nullptr
+			DNode<ListType>* p = head;
+			while (p != nullptr) {
+				if (p->info == value)
+					return p;
+
+				p = p->next;
+			}
+			return nullptr;
 		}
 	};
 }

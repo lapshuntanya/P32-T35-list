@@ -1,4 +1,5 @@
 #include "MyList.h"
+#include "DList.h"
 
 int main()
 {
@@ -29,7 +30,7 @@ int main()
     }
     */
 
-
+    /*
     MyList<int> b; // head = tail = nullptr
     b.show(); // empty
 
@@ -38,7 +39,26 @@ int main()
     b.push_back(2); // head=4, tail=2
     b.push_back(5); // head=4, tail=5
     b.show();
-    cout << "---------------------\n\n";
+    cout << "---------------------\n\n";*/
+
+
+    DList<int> d;
+    d.show();
+
+    d.push_back(4);
+    d.push_back(8);
+    d.push_back(2);
+    d.push_back(5);
+    d.show(); //4 8 2 5
+
+    d.showReverse();//5 2 8 4
+
+    cout << "====================\n";
+    DNode<int>* found = d.seach(-5);
+    if (found == nullptr)
+        cout << "Not found\n";
+    else
+        found->show();
 }
 
 
