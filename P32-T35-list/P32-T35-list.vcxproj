@@ -129,6 +129,9 @@
   <ItemGroup>
     <ClCompile Include="P32-T35-list.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MyList.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
