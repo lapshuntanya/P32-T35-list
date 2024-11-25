@@ -34,7 +34,28 @@ namespace mylist {
 		}
 
 		void push_back(ListType value) {
+			//1 Створюєсо новий вузол
+			Node<ListType>* el = new Node<ListType>(value);
+			//Якщо перший вузол в списку
+			if (head == nullptr) {
+				head = tail = el;
+			}
+			else {//Якщо НЕ перший вузол в списку
+				//В хвіст зберігаємо адресу нового вузла (привязка вузлів)
+				tail->next = el;
+				//Оновлюємо значення хвоста - зсовуємо хвіст
+				tail = el;
+			}
+		}
 
+		void show() {
+			if (head == nullptr) cout << "List is empty!\n";
+
+			Node<ListType>* p = head;
+			while (p != nullptr) {
+				p->show();
+				p = p->next;
+			}
 		}
 	};
 }
